@@ -1,3 +1,5 @@
-# Js App Boilerplate
+# docker-helper
 
-This is a js app boilerplate with batteries included to speed up project initiation.
+A set of useful clis to help managing docker containers.
+
+- [Development](docs/Development.md)

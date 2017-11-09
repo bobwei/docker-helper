@@ -1,0 +1,14 @@
+pipeline:
+  build:
+    image: docker
+    commands:
+      - source .envs/.docker.env.sh
+      - docker login -u $DOCKER_USERNAME_1 -p $DOCKER_PASSWORD_1
+      - docker build -t $IMAGE:${DRONE_COMMIT_SHA} -t $IMAGE:latest $CONTEXT
+      - docker push $IMAGE:${DRONE_COMMIT_SHA} && docker push $IMAGE:latest
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    when:
+      event: push
+      branch: [ master ]
+    secrets: [ docker_username_1, docker_password_1 ]

@@ -12,7 +12,6 @@
     "test:all": "jest",
     "lint-staged": "lint-staged --verbose",
     "flow": "flow",
-    "prepublish": "yarn run clean && yarn run test:all && yarn run build",
     "clean": "rimraf lib",
     "dev": "nodemon src/index.js --exec babel-node"
   },
@@ -42,7 +41,9 @@
     "rimraf": "^2.6.1"
   },
   "dependencies": {
-    "dotenv": "^4.0.0"
+    "dotenv": "^4.0.0",
+    "got": "^7.1.0",
+    "ramda": "^0.25.0"
   },
   "jest": {
     "verbose": true,
