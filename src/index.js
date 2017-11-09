@@ -11,6 +11,8 @@ const { DOCKER_HOST, DOCKER_HELPER_STACK } = R.compose(
     DOCKER_HOST: 'unix:///var/run/docker.sock',
   }),
 )(process.env);
+console.log('You are running with following context:');
+console.log({ DOCKER_HOST, DOCKER_HELPER_STACK });
 
 Promise.all([
   request.get(`${DOCKER_HOST}/nodes`, {
