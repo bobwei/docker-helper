@@ -1,11 +1,15 @@
 FROM node:8.6.0-alpine
 
-RUN mkdir -p /usr/src/app
-WORKDIR /usr/src/app
+ENV APP_SRC /usr/src/app
+
+RUN mkdir -p $APP_SRC
+WORKDIR $APP_SRC
 
 COPY package.json yarn.lock ./
 RUN yarn
 
 COPY . .
+RUN yarn link
+RUN yarn global add babel-cli
 
-CMD [ "yarn", "start" ]
+CMD [ "docker-helper" ]

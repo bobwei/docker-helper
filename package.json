@@ -1,7 +1,10 @@
 {
-  "name": "js-app-boilerplate",
+  "name": "docker-helper",
   "version": "1.2.5",
   "description": "",
+  "bin": {
+    "docker-helper": "bin/docker-helper.js"
+  },
   "scripts": {
     "start": "babel-node src/index.js",
     "build": "babel src --out-dir lib",
