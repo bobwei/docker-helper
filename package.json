@@ -44,6 +44,7 @@
     "rimraf": "^2.6.1"
   },
   "dependencies": {
+    "babel-core": "^6.26.0",
     "dotenv": "^4.0.0",
     "got": "^7.1.0",
     "ramda": "^0.25.0"

@@ -10,6 +10,5 @@ RUN yarn
 
 COPY . .
 RUN yarn link
-RUN yarn global add babel-cli
 
 CMD [ "docker-helper" ]

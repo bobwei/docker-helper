@@ -1,3 +1,4 @@
-#!/usr/bin/env babel-node
+#!/usr/bin/env node
 
-require('modules/index');
+require('babel-core/register');
+require('../src/index');
