@@ -15,12 +15,12 @@ docker run \
 drone secret add \
   --repository bob-wei/docker-helper \
   --name docker_username_1 \
-  --value YOUR_USERNAME
+  --value $(read -sr input && echo $input)
 ```
 
 ```
 drone secret add \
   --repository bob-wei/docker-helper \
   --name docker_password_1 \
-  --value YOUR_PASSWORD
+  --value $(read -sr input && echo $input)
 ```
