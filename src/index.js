@@ -4,6 +4,7 @@ import R from 'ramda';
 import request from 'got';
 
 import mapNodesToIps from './utils/mapNodesToIps';
+import mapServicesToEndpoints from './utils/mapServicesToEndpoints';
 
 const { DOCKER_HOST, DOCKER_HELPER_STACK } = R.compose(
   R.evolve({
@@ -39,27 +40,7 @@ Promise.all([
 ])
   .then(R.map(R.compose(res => JSON.parse(res), R.path(['body']))))
   .then(R.adjust(mapNodesToIps, 0))
-  .then(
-    R.adjust(
-      R.map(
-        R.compose(
-          R.map(R.pick(['PublishedPort'])),
-          R.path(['Endpoint', 'Ports']),
-        ),
-      ),
-      1,
-    ),
-  )
   .then(R.apply(R.xprod))
-  .then(R.map(R.adjust(R.of, 0)))
-  .then(R.map(R.apply(R.xprod)))
-  .then(
-    R.map(
-      R.map(([ip, { PublishedPort }]) => ({
-        baseUrl: `http://${ip}:${PublishedPort}`,
-      })),
-    ),
-  )
-  .then(R.flatten)
+  .then(mapServicesToEndpoints)
   .then(R.compose(log, R.merge(info), R.objOf('endpoints')))
   .catch(R.compose(log, R.merge(info), R.objOf('error'), R.toString));
