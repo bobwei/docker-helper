@@ -3,6 +3,8 @@ import 'dotenv/config';
 import R from 'ramda';
 import request from 'got';
 
+import mapNodesToIps from './utils/mapNodesToIps';
+
 const { DOCKER_HOST, DOCKER_HELPER_STACK } = R.compose(
   R.evolve({
     DOCKER_HOST: R.when(R.startsWith('unix:'), R.concat(R.__, ':')),
@@ -36,7 +38,7 @@ Promise.all([
   }),
 ])
   .then(R.map(R.compose(res => JSON.parse(res), R.path(['body']))))
-  .then(R.adjust(R.map(R.path(['Status', 'Addr'])), 0))
+  .then(R.adjust(mapNodesToIps, 0))
   .then(
     R.adjust(
       R.map(
