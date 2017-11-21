@@ -11,8 +11,13 @@ const { DOCKER_HOST, DOCKER_HELPER_STACK } = R.compose(
     DOCKER_HOST: 'unix:///var/run/docker.sock',
   }),
 )(process.env);
-console.log('You are running with following context:');
-console.log({ DOCKER_HOST, DOCKER_HELPER_STACK });
+const info = {
+  message: 'You are running with following context:',
+  context: { DOCKER_HOST, DOCKER_HELPER_STACK },
+};
+const log = R.tap(
+  R.compose(console.log, data => JSON.stringify(data, null, 2)),
+);
 
 Promise.all([
   request.get(`${DOCKER_HOST}/nodes`, {
@@ -36,7 +41,7 @@ Promise.all([
     R.adjust(
       R.map(
         R.compose(
-          R.map(R.path(['PublishedPort'])),
+          R.map(R.pick(['PublishedPort'])),
           R.path(['Endpoint', 'Ports']),
         ),
       ),
@@ -46,8 +51,13 @@ Promise.all([
   .then(R.apply(R.xprod))
   .then(R.map(R.adjust(R.of, 0)))
   .then(R.map(R.apply(R.xprod)))
-  .then(R.map(R.map(R.join(':'))))
+  .then(
+    R.map(
+      R.map(([ip, { PublishedPort }]) => ({
+        baseUrl: `http://${ip}:${PublishedPort}`,
+      })),
+    ),
+  )
   .then(R.flatten)
-  .then(R.map(R.concat('http://')))
-  .then(R.compose(console.log, res => JSON.stringify(res, null, 2)))
-  .catch(R.compose(console.log, R.toString));
+  .then(R.compose(log, R.merge(info), R.objOf('endpoints')))
+  .catch(R.compose(log, R.merge(info), R.objOf('error'), R.toString));
