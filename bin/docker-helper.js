@@ -1,4 +1,4 @@
 #!/usr/bin/env node
 
 require('babel-core/register');
-require('../src/index');
+require('../src/getEndpoints').default();
