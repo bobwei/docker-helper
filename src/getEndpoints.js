@@ -6,7 +6,7 @@ import request from 'got';
 import mapServicesEndpoints from './utils/mapServicesEndpoints';
 
 const fn = () => {
-  const { DOCKER_HOST, DOCKER_HELPER_STACK } = R.compose(
+  const { DOCKER_HOST, DOCKER_HELPER_STACK, APP_TAG } = R.compose(
     R.evolve({
       DOCKER_HOST: R.when(R.startsWith('unix:'), R.concat(R.__, ':')),
     }),
@@ -16,7 +16,7 @@ const fn = () => {
   )(process.env);
   const info = {
     message: 'You are running with following context:',
-    context: { DOCKER_HOST, DOCKER_HELPER_STACK },
+    context: { DOCKER_HOST, DOCKER_HELPER_STACK, APP_TAG },
   };
   const log = R.tap(
     R.compose(console.log, data => JSON.stringify(data, null, 2)),

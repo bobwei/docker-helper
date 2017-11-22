@@ -8,6 +8,9 @@ WORKDIR $APP_SRC
 COPY package.json yarn.lock ./
 RUN yarn
 
+ARG APP_TAG
+ENV APP_TAG=$APP_TAG
+
 COPY . .
 RUN yarn link
 
