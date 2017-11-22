@@ -1,0 +1,238 @@
+[
+  {
+    "ID": "6g5emk55lraakn28m6nqp4tvn",
+    "Version": {
+      "Index": 1738
+    },
+    "CreatedAt": "2017-11-22T07:25:37.191282857Z",
+    "UpdatedAt": "2017-11-22T07:25:37.19318738Z",
+    "Spec": {
+      "Name": "bobwei_docker-helper_nginx2",
+      "Labels": {
+        "com.docker.stack.image": "nginx",
+        "com.docker.stack.namespace": "bobwei_docker-helper"
+      },
+      "TaskTemplate": {
+        "ContainerSpec": {
+          "Image": "nginx:latest@sha256:9fca103a62af6db7f188ac3376c60927db41f88b8d2354bf02d2290a672dc425",
+          "Labels": {
+            "com.docker.stack.namespace": "bobwei_docker-helper"
+          },
+          "Privileges": {
+            "CredentialSpec": null,
+            "SELinuxContext": null
+          }
+        },
+        "Resources": {},
+        "Placement": {
+          "Platforms": [
+            {
+              "Architecture": "amd64",
+              "OS": "linux"
+            },
+            {
+              "OS": "linux"
+            },
+            {
+              "Architecture": "arm64",
+              "OS": "linux"
+            },
+            {
+              "Architecture": "386",
+              "OS": "linux"
+            },
+            {
+              "Architecture": "ppc64le",
+              "OS": "linux"
+            },
+            {
+              "Architecture": "s390x",
+              "OS": "linux"
+            }
+          ]
+        },
+        "Networks": [
+          {
+            "Target": "jl5hgn3mvucg9ud8tc2ndzw8c",
+            "Aliases": [
+              "nginx2"
+            ]
+          }
+        ],
+        "ForceUpdate": 0,
+        "Runtime": "container"
+      },
+      "Mode": {
+        "Replicated": {
+          "Replicas": 1
+        }
+      },
+      "EndpointSpec": {
+        "Mode": "vip",
+        "Ports": [
+          {
+            "Protocol": "tcp",
+            "TargetPort": 80,
+            "PublishMode": "ingress"
+          }
+        ]
+      }
+    },
+    "Endpoint": {
+      "Spec": {
+        "Mode": "vip",
+        "Ports": [
+          {
+            "Protocol": "tcp",
+            "TargetPort": 80,
+            "PublishMode": "ingress"
+          }
+        ]
+      },
+      "Ports": [
+        {
+          "Protocol": "tcp",
+          "TargetPort": 80,
+          "PublishedPort": 30002,
+          "PublishMode": "ingress"
+        }
+      ],
+      "VirtualIPs": [
+        {
+          "NetworkID": "hrtich6zmu4croqah0tfgviut",
+          "Addr": "10.255.0.5/16"
+        },
+        {
+          "NetworkID": "jl5hgn3mvucg9ud8tc2ndzw8c",
+          "Addr": "10.0.0.4/24"
+        }
+      ]
+    }
+  },
+  {
+    "ID": "m2z2tiwkjypzfb9fkpnp076sa",
+    "Version": {
+      "Index": 1731
+    },
+    "CreatedAt": "2017-11-22T07:25:33.597104418Z",
+    "UpdatedAt": "2017-11-22T07:25:33.599119908Z",
+    "Spec": {
+      "Name": "bobwei_docker-helper_nginx",
+      "Labels": {
+        "com.docker.stack.image": "nginx",
+        "com.docker.stack.namespace": "bobwei_docker-helper"
+      },
+      "TaskTemplate": {
+        "ContainerSpec": {
+          "Image": "nginx:latest@sha256:9fca103a62af6db7f188ac3376c60927db41f88b8d2354bf02d2290a672dc425",
+          "Labels": {
+            "com.docker.stack.namespace": "bobwei_docker-helper"
+          },
+          "Privileges": {
+            "CredentialSpec": null,
+            "SELinuxContext": null
+          }
+        },
+        "Resources": {},
+        "Placement": {
+          "Platforms": [
+            {
+              "Architecture": "amd64",
+              "OS": "linux"
+            },
+            {
+              "OS": "linux"
+            },
+            {
+              "Architecture": "arm64",
+              "OS": "linux"
+            },
+            {
+              "Architecture": "386",
+              "OS": "linux"
+            },
+            {
+              "Architecture": "ppc64le",
+              "OS": "linux"
+            },
+            {
+              "Architecture": "s390x",
+              "OS": "linux"
+            }
+          ]
+        },
+        "Networks": [
+          {
+            "Target": "jl5hgn3mvucg9ud8tc2ndzw8c",
+            "Aliases": [
+              "nginx"
+            ]
+          }
+        ],
+        "ForceUpdate": 0,
+        "Runtime": "container"
+      },
+      "Mode": {
+        "Replicated": {
+          "Replicas": 1
+        }
+      },
+      "EndpointSpec": {
+        "Mode": "vip",
+        "Ports": [
+          {
+            "Protocol": "tcp",
+            "TargetPort": 80,
+            "PublishMode": "ingress"
+          },
+          {
+            "Protocol": "tcp",
+            "TargetPort": 81,
+            "PublishMode": "ingress"
+          }
+        ]
+      }
+    },
+    "Endpoint": {
+      "Spec": {
+        "Mode": "vip",
+        "Ports": [
+          {
+            "Protocol": "tcp",
+            "TargetPort": 80,
+            "PublishMode": "ingress"
+          },
+          {
+            "Protocol": "tcp",
+            "TargetPort": 81,
+            "PublishMode": "ingress"
+          }
+        ]
+      },
+      "Ports": [
+        {
+          "Protocol": "tcp",
+          "TargetPort": 80,
+          "PublishedPort": 30000,
+          "PublishMode": "ingress"
+        },
+        {
+          "Protocol": "tcp",
+          "TargetPort": 81,
+          "PublishedPort": 30001,
+          "PublishMode": "ingress"
+        }
+      ],
+      "VirtualIPs": [
+        {
+          "NetworkID": "hrtich6zmu4croqah0tfgviut",
+          "Addr": "10.255.0.3/16"
+        },
+        {
+          "NetworkID": "jl5hgn3mvucg9ud8tc2ndzw8c",
+          "Addr": "10.0.0.2/24"
+        }
+      ]
+    }
+  }
+]

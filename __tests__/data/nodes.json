@@ -1,0 +1,109 @@
+[
+  {
+    "ID": "5dbwanxihzf0ej716fghl75r3",
+    "Version": {
+      "Index": 1726
+    },
+    "CreatedAt": "2017-11-08T17:14:40.344926957Z",
+    "UpdatedAt": "2017-11-22T03:29:42.286644016Z",
+    "Spec": {
+      "Labels": {},
+      "Role": "manager",
+      "Availability": "active"
+    },
+    "Description": {
+      "Hostname": "moby",
+      "Platform": {
+        "Architecture": "x86_64",
+        "OS": "linux"
+      },
+      "Resources": {
+        "NanoCPUs": 4000000000,
+        "MemoryBytes": 2095874048
+      },
+      "Engine": {
+        "EngineVersion": "17.09.0-ce",
+        "Plugins": [
+          {
+            "Type": "Log",
+            "Name": "awslogs"
+          },
+          {
+            "Type": "Log",
+            "Name": "fluentd"
+          },
+          {
+            "Type": "Log",
+            "Name": "gcplogs"
+          },
+          {
+            "Type": "Log",
+            "Name": "gelf"
+          },
+          {
+            "Type": "Log",
+            "Name": "journald"
+          },
+          {
+            "Type": "Log",
+            "Name": "json-file"
+          },
+          {
+            "Type": "Log",
+            "Name": "logentries"
+          },
+          {
+            "Type": "Log",
+            "Name": "splunk"
+          },
+          {
+            "Type": "Log",
+            "Name": "syslog"
+          },
+          {
+            "Type": "Network",
+            "Name": "bridge"
+          },
+          {
+            "Type": "Network",
+            "Name": "host"
+          },
+          {
+            "Type": "Network",
+            "Name": "ipvlan"
+          },
+          {
+            "Type": "Network",
+            "Name": "macvlan"
+          },
+          {
+            "Type": "Network",
+            "Name": "null"
+          },
+          {
+            "Type": "Network",
+            "Name": "overlay"
+          },
+          {
+            "Type": "Volume",
+            "Name": "local"
+          }
+        ]
+      },
+      "TLSInfo": {
+        "TrustRoot": "-----BEGIN CERTIFICATE-----\nMIIBajCCARCgAwIBAgIUeOYkUZ43J4ILfz4Mp6PCEoA/OT8wCgYIKoZIzj0EAwIw\nEzERMA8GA1UEAxMIc3dhcm0tY2EwHhcNMTcxMTA4MTcxMDAwWhcNMzcxMTAzMTcx\nMDAwWjATMREwDwYDVQQDEwhzd2FybS1jYTBZMBMGByqGSM49AgEGCCqGSM49AwEH\nA0IABNei8otMyNy/oFQ+62YRDsYjyXcRxE3TdJQFicU2+fJIxUM8JUd0YxbRf7TX\nTBnh/DrC+3h7Zie7jykj+6bTBcmjQjBAMA4GA1UdDwEB/wQEAwIBBjAPBgNVHRMB\nAf8EBTADAQH/MB0GA1UdDgQWBBRuRtxcjkN5SYarQpR/SevmMziYeDAKBggqhkjO\nPQQDAgNIADBFAiEAksUD5RFPhTdYkjZ5+ot3HaMeQ7cZEL54PcuCG4aoLgwCIEKn\n2LDRqWOXXpheY3E2eNwYxTZfTH5cP/DPX7XNkt/9\n-----END CERTIFICATE-----\n",
+        "CertIssuerSubject": "MBMxETAPBgNVBAMTCHN3YXJtLWNh",
+        "CertIssuerPublicKey": "MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAE16Lyi0zI3L+gVD7rZhEOxiPJdxHETdN0lAWJxTb58kjFQzwlR3RjFtF/tNdMGeH8OsL7eHtmJ7uPKSP7ptMFyQ=="
+      }
+    },
+    "Status": {
+      "State": "ready",
+      "Addr": "192.168.65.2"
+    },
+    "ManagerStatus": {
+      "Leader": true,
+      "Reachability": "reachable",
+      "Addr": "192.168.65.2:2377"
+    }
+  }
+]
