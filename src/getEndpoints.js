@@ -3,8 +3,7 @@ import 'dotenv/config';
 import R from 'ramda';
 import request from 'got';
 
-import mapNodesToIps from './utils/mapNodesToIps';
-import mapServicesToEndpoints from './utils/mapServicesToEndpoints';
+import mapServicesEndpoints from './utils/mapServicesEndpoints';
 
 const fn = () => {
   const { DOCKER_HOST, DOCKER_HELPER_STACK } = R.compose(
@@ -39,9 +38,8 @@ const fn = () => {
     }),
   ])
     .then(R.map(R.compose(res => JSON.parse(res), R.path(['body']))))
-    .then(R.adjust(mapNodesToIps, 0))
     .then(R.apply(R.xprod))
-    .then(mapServicesToEndpoints)
+    .then(R.map(mapServicesEndpoints))
     .then(R.compose(log, R.merge(info), R.objOf('endpoints')))
     .catch(R.compose(log, R.merge(info), R.objOf('error'), R.toString));
 };
