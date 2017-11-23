@@ -2,8 +2,6 @@
 
 A set of useful clis to help managing docker containers.
 
-- [Development](docs/Development.md)
-
 
 ## getEndpoints
 
@@ -38,4 +36,31 @@ result
     }
   ]
 }
+```
+
+# Development
+
+## Test with Docker
+
+```
+docker run \
+  -e DOCKER_HELPER_STACK=YOUR_STACK \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  bobwei/docker-helper
+```
+
+## Add secret to your drone
+
+```
+drone secret add \
+  --repository bob-wei/docker-helper \
+  --name docker_username_1 \
+  --value $(read -sr input && echo $input)
+```
+
+```
+drone secret add \
+  --repository bob-wei/docker-helper \
+  --name docker_password_1 \
+  --value $(read -sr input && echo $input)
 ```
